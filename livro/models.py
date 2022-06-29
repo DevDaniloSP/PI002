@@ -38,7 +38,7 @@ class Emprestimo(models.Model):
         return f"{self.ra} | {self.livro}"    
 
 class Usuario(AbstractUser):
-    ra = models.ManyToManyField("Emprestimo")
+    ra = models.CharField(max_length=25)
     # Chave que conectará com a table de empréstimo
     ano = models.CharField(max_length=50)
     turma = models.CharField(max_length=50)

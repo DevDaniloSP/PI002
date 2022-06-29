@@ -20,7 +20,7 @@ class Livro(models.Model):
 
 
 class Emprestimo(models.Model):
-    isbn = models.ForeignKey("Livro", related_name="Emprestimo", on_delete=models.SET_NULL, null=True)
+    isbn = models.ForeignKey(Livro, on_delete=models.PROTECT)
 # Chave que conectará ao banco de livros
     ra = models.IntegerField()
 # Chave que conectará com a table de empréstimo
@@ -31,8 +31,11 @@ class Emprestimo(models.Model):
     ativo = models.BooleanField(default=False)
     data_cadastro = models.DateField(default=date.today)
 
-    def __str__(self):
-        return self.isbn
+    #def __str__(self):
+    #    return self.isbn
+
+    def __str__(self) -> int:
+        return f"{self.ra} | {self.livro}"    
 
 class Usuario(AbstractUser):
     ra = models.ManyToManyField("Emprestimo")

@@ -10,7 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 import os
-# from msilib.schema import Media
+import django_heroku
 from pathlib import Path
 from pickle import TRUE
 
@@ -141,3 +141,5 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'thumb_livro')
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())

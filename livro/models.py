@@ -21,7 +21,7 @@ class Livro(models.Model):
 
 
 class Emprestimo(models.Model):
-    isbn = models.ForeignKey(Livro, on_delete=models.PROTECT)
+    isbn = models.ForeignKey('Livro', on_delete=models.PROTECT)
 # Chave que conectará ao banco de livros
     ra = models.ForeignKey('Usuario', on_delete=models.CASCADE)
 # Chave que conectará com a table de empréstimo

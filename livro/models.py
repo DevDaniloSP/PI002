@@ -23,7 +23,7 @@ class Livro(models.Model):
 class Emprestimo(models.Model):
     isbn = models.ForeignKey(Livro, on_delete=models.PROTECT)
 # Chave que conectará ao banco de livros
-    ra = models.ForeignKey('Usuario', on_delete=models.PROTECT)
+    ra = models.ForeignKey('Usuario', on_delete=models.CASCADE)
 # Chave que conectará com a table de empréstimo
     dataemp = models.DateTimeField()
 # Nome alternativo: Empréstimo
@@ -39,7 +39,7 @@ class Emprestimo(models.Model):
         return f"{self.ra} | {self.livro}"    
 
 class Usuario(AbstractUser):
-    ra = models.IntegerField(null=False , blank=False)
+    ra = models.IntegerField(null=True , blank=True)
     # Chave que conectará com a table de empréstimo
     ano = models.CharField(max_length=50)
     turma = models.CharField(max_length=50)
